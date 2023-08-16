@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  scraper:
+    build:
+      context: .
+      dockerfile: scraper/Dockerfile
+    volumes:
+      - ./scraper:/app/scraper
+      - database_volume:/app/data
+
+  # scraper:
+  #   build:
+  #     context: .
+  #     dockerfile: scraper_spider/Dockerfile
+  #   volumes:
+  #     - ./scraper_spider:/app/scraper_spider
+  #     - database_volume:/app/data
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - scraper
+    volumes:
+      - ./api:/app/api
+      - database_volume:/app/data
+
+volumes:
+  database_volume:
+
+
+# This configuration defines two services: scraper_spider (or scraper) and api.
+# It also sets up a volume data to store the SQLite database file.
+# This ensures that the database file created by the scraper is also accessible to the API service.
