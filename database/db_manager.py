@@ -4,6 +4,24 @@ from config_util import config
 
 DB_PATH = config['database']['path']
 
+def data_exists():
+    conn = None
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        
+        cursor = conn.cursor()
+        cursor.execute('''SELECT * FROM parts_data LIMIT 10''')
+        
+        if cursor.fetchone()[0] == 1:
+            return True
+        return False
+    except sqlite3.Error as e:
+        print(e)
+        return False
+    finally:
+        if conn:
+            conn.close()
+
 def store_to_db(data):
     connection = sqlite3.connect(DB_PATH)
     cursor = connection.cursor()

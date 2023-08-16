@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from database.db_manager import store_to_db
+from database.db_manager import store_to_db, data_exists
 
 BASE_URL = "https://www.urparts.com/"
 
@@ -50,6 +50,7 @@ def scrape_website():
     for manufacturer in soup.select('div.c_container.allmakes a'):
         manufacturer_name = manufacturer.text.strip()
         manufacturer_url = BASE_URL + manufacturer['href']
+        print("manufacturer_name......", manufacturer_name)
         
         for category_url in fetch_categories(manufacturer_url):
             for model_url in fetch_models(category_url):
@@ -68,5 +69,9 @@ def scrape_website():
     return data
 
 if __name__ == "__main__":
-    scraped_data = scrape_website()
-    store_to_db(scraped_data)
+    if not data_exists():
+        scraped_data = scrape_website()
+        store_to_db(scraped_data)
+    else:
+        print("Data already exists in the database. Exiting...")
+    

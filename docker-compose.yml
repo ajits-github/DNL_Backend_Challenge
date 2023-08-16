@@ -1,21 +1,22 @@
 version: '3'
 
 services:
-  scraper:
-    build:
-      context: .
-      dockerfile: scraper/Dockerfile
-    volumes:
-      - ./scraper:/app/scraper
-      - database_volume:/app/data
-
   # scraper:
   #   build:
   #     context: .
-  #     dockerfile: scraper_spider/Dockerfile
+  #     dockerfile: scraper/Dockerfile
   #   volumes:
-  #     - ./scraper_spider:/app/scraper_spider
+  #     # - ./scraper:/app/scraper
   #     - database_volume:/app/data
+
+  scraper:
+    build:
+      context: .
+      dockerfile: scraper_spider/Dockerfile
+    volumes:
+      # - ./scraper_spider:/app/scraper_spider
+      - database_volume:/app/data
+
   api:
     build:
       context: .
@@ -25,7 +26,7 @@ services:
     depends_on:
       - scraper
     volumes:
-      - ./api:/app/api
+      # - ./api:/app/api
       - database_volume:/app/data
 
 volumes:
