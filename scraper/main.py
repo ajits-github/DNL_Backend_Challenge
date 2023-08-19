@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-from database.db_manager import store_to_db, data_exists
+from database.db_manager import store_to_db, data_exists, initialize_database
 
 BASE_URL = "https://www.urparts.com/"
 
@@ -69,6 +69,8 @@ def scrape_website():
     return data
 
 if __name__ == "__main__":
+    # Ensure the database is initialized (table is created if doesn't exist)
+    initialize_database()
     if not data_exists():
         scraped_data = scrape_website()
         store_to_db(scraped_data)

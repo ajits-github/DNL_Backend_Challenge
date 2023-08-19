@@ -14,7 +14,7 @@ fastapi==0.63.0
 uvicorn==0.13.4
 pydantic==1.8.1
 starlette==0.13.6
-pyyamlL==6.0.1
+pyyaml==6.0.1
 
 # Additional utility (only if you want to see more detailed logs)
 loguru==0.5.3

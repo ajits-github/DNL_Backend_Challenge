@@ -32,6 +32,10 @@ async def get_parts(manufacturer: str = None):
 
     return results
 
+@app.get("/favicon.ico")
+def get_favicon():
+    return {}, 204
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
