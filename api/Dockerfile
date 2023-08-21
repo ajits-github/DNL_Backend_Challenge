@@ -14,6 +14,7 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 COPY api .
 COPY config_util.py .
 COPY config.yml .
+COPY .env .
 
 # Specify the command to run on container start
 CMD ["uvicorn", "api_server:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]

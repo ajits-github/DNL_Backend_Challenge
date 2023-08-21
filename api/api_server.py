@@ -5,7 +5,12 @@ from config_util import config
 
 
 DB_PATH = config['database']['path']
-app = FastAPI()
+app = FastAPI(
+    title="Parts Catalog API",
+    description="An API to fetch and manage data related to various machine parts scraped from different manufacturers. \
+                It provides endpoints to query parts based on manufacturer, category, model, and other related fields.",
+        version="1.0.0"
+)
 
 def query_database(query, params=()):
     with sqlite3.connect(DB_PATH) as conn:
