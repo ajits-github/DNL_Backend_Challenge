@@ -50,7 +50,6 @@ def scrape_website():
     for manufacturer in soup.select('div.c_container.allmakes a'):
         manufacturer_name = manufacturer.text.strip()
         manufacturer_url = BASE_URL + manufacturer['href']
-        print("manufacturer_name......", manufacturer_name)
         
         for category_url in fetch_categories(manufacturer_url):
             for model_url in fetch_models(category_url):

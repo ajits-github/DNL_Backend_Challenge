@@ -6,7 +6,6 @@ WORKDIR /app
 
 # Copy the requirements file into the container
 COPY scraper/requirements.txt .
-# COPY scraper /app/scraper
 
 # Install any needed packages specified in requirements.txt
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
@@ -16,6 +15,7 @@ COPY scraper .
 COPY database /app/database
 COPY config_util.py .
 COPY config.yml .
+COPY .env .
 
 # Specify the command to run on container start
 CMD ["python", "./main.py"]
