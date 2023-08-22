@@ -15,6 +15,7 @@ COPY scraper_spider .
 COPY database /app/database
 COPY config_util.py .
 COPY config.yml .
+COPY .env .
 
 # Specify the command to run on container start
 CMD ["python", "./main.py"]
