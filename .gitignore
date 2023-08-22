@@ -1,6 +1,7 @@
 data/
 venv/
 DOCKER.md
+.env
 
 # Python cache files
 __pycache__/
@@ -8,3 +9,6 @@ __pycache__/
 *.pyo
 
 .vscode/
+parts_spider1.log
+dockercompose_actual.txt
+Automated Web Scraping Solution.pptx
