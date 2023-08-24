@@ -7,7 +7,7 @@ if __name__ == "__main__":
     initialize_database()
 
     if not data_exists():
-        process = CrawlerProcess()
+        process = CrawlerProcess({'LOG_LEVEL': 'DEBUG'})
         process.crawl(PartsSpider)
         process.start()
     else:
