@@ -17,6 +17,9 @@ pydantic==1.8.1
 starlette==0.13.6
 pyyaml==6.0.1
 
+#Tests
+pytest
+
 #Azure
 azure-storage-blob==12.8.1
 

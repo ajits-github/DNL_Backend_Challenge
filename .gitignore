@@ -9,10 +9,5 @@ __pycache__/
 *.pyo
 
 .vscode/
-parts_spider1.log
-dockercompose_actual.txt
-Automated Web Scraping Solution.pptx
-DNL.txt
-DNL_challenge.PNG
-DNL_questions.txt
-favicon.txt
+*.log
+docs/
