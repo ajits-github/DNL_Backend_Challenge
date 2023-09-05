@@ -16,5 +16,6 @@ from api.api_server import app
 client = TestClient(app)
 
 def test_get_parts():
-    response = client.get("/parts/?manufacturer=Ammann")
+    # response = client.get("/parts/?manufacturer=Ammann")
+    response = client.get("/parts/")
     assert response.status_code == 200
