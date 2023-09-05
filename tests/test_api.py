@@ -25,7 +25,7 @@
 # ======================================================
 import requests
 
-BASE_URL = "http://127.0.0.1:8000"
+BASE_URL = "https://www.urparts.com/index.cfm/page/catalogue"
 
 def test_access_website():
     response = requests.get(BASE_URL)
